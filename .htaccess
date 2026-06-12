@@ -1,0 +1,126 @@
+# ============================================================
+#  Dimora Tauro — .htaccess per hosting OVH (Apache 2.4)
+# ============================================================
+
+Options -Indexes
+ServerSignature Off
+
+# ============================================================
+#  REDIRECT: HTTP → HTTPS  e  non-www → www
+# ============================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # 2) non-www → www
+  RewriteCond %{HTTP_HOST} ^dimoratauro\.it$ [NC]
+  RewriteRule ^ https://www.dimoratauro.it%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ============================================================
+#  SICUREZZA: blocca file di sviluppo e system files
+# ============================================================
+<FilesMatch "(\.DS_Store|\.git|\.env|\.htpasswd|reviews\.csv|script\.py|tweaks-panel\.jsx)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order Allow,Deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# ============================================================
+#  CHARSET predefinito
+# ============================================================
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .html .htm .css .js .json .xml .txt
+</IfModule>
+
+# ============================================================
+#  COMPRESSIONE GZIP
+# ============================================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml text/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/woff2 font/woff application/font-woff2
+
+  # Non comprimere se già compressa
+  SetEnvIfNoCase Request_URI \.(?:gz|br)$ no-gzip dont-vary
+  Header append Vary Accept-Encoding env=!no-gzip
+</IfModule>
+
+# ============================================================
+#  CACHE HEADERS (browser caching)
+# ============================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                          "access plus 1 month"
+
+  # HTML — aggiornato spesso
+  ExpiresByType text/html                 "access plus 2 hours"
+
+  # Immagini
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType image/png                 "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/gif                 "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType image/x-icon              "access plus 1 year"
+
+  # CSS e JS — versioned tramite browser cache-busting se necessario
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+
+  # Font
+  ExpiresByType font/woff2                "access plus 1 year"
+  ExpiresByType font/woff                 "access plus 1 year"
+  ExpiresByType application/font-woff2    "access plus 1 year"
+
+  # Dati
+  ExpiresByType application/json          "access plus 0 seconds"
+  ExpiresByType text/xml                  "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Cache immutable per asset con hash/versione
+  <FilesMatch "\.(webp|png|jpg|jpeg|gif|ico|svg|woff2|woff)$">
+    Header append Cache-Control "public, immutable"
+  </FilesMatch>
+
+  # ============================================================
+  #  SECURITY HEADERS
+  # ============================================================
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+  # Rimuove info sul server
+  Header always unset X-Powered-By
+  Header always unset Server
+
+  # HSTS — attivare solo DOPO che HTTPS funziona correttamente
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ============================================================
+#  MIME TYPES per WebP
+# ============================================================
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
+
+# ============================================================
+#  ERRORI PERSONALIZZATI
+# ============================================================
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+ErrorDocument 500 /404.html
