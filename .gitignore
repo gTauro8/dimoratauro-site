@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Dev/editor
+.claude/
+*.jsx
+*.py
+*.csv
+
+# Foto originali non usate dal sito
+uploads/
+screenshots/
+
+# Immagini originali JPEG (il sito usa solo .webp)
+assets/img/*.jpg
