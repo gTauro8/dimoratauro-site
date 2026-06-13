@@ -164,6 +164,10 @@
       marketing:!!consent.marketing,
       updatedAt:new Date().toISOString()
     }));
+    if(typeof gtag==="function") gtag("consent","update",{
+      analytics_storage:consent.analytics?"granted":"denied",
+      ad_storage:consent.marketing?"granted":"denied"
+    });
     document.documentElement.dataset.cookies="set";
     if(cookieBanner) cookieBanner.classList.remove("is-open");
   }
@@ -182,7 +186,13 @@
   }
   function initCookieConsent(){
     const saved=readCookieConsent();
-    if(saved) document.documentElement.dataset.cookies="set";
+    if(saved){
+      document.documentElement.dataset.cookies="set";
+      if(typeof gtag==="function") gtag("consent","update",{
+        analytics_storage:saved.analytics?"granted":"denied",
+        ad_storage:saved.marketing?"granted":"denied"
+      });
+    }
     else if(cookieBanner) cookieBanner.classList.add("is-open");
     cookieReject?.addEventListener("click",()=>writeCookieConsent({analytics:false,marketing:false}));
     cookieAccept?.addEventListener("click",()=>writeCookieConsent({analytics:true,marketing:true}));
