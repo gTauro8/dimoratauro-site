@@ -646,8 +646,10 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.04;margin:0;l
   .foot__bot-row{flex-direction:column;align-items:flex-start}
   .foot__legal{text-align:left}
   .modal{padding:12px}
-  .cookie{left:12px;right:12px;bottom:88px;width:auto}
-  .cookie__panel{padding:18px}
+  .cookie{inset:0;width:auto;bottom:0;background:rgba(46,46,43,.55);backdrop-filter:blur(3px);
+    display:none;align-items:center;justify-content:center;padding:16px}
+  .cookie.is-open{display:flex}
+  .cookie__panel{padding:20px;width:100%;max-width:480px}
   .cookie__actions{display:grid;grid-template-columns:1fr}
   .cookie__actions .btn{width:100%}
   .modal__card{max-width:none;margin:auto 0;border-radius:5px}
