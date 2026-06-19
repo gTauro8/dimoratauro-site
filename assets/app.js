@@ -79,6 +79,7 @@
   slides.forEach((_,i)=>{
     const d=document.createElement("button");
     d.className="hero__dot"+(i===0?" is-active":"");
+    d.setAttribute("aria-label","Foto "+(i+1));
     d.addEventListener("click",()=>goHero(i,true));
     dotsWrap.appendChild(d);
   });
