@@ -545,41 +545,41 @@
   /* ---------------- Room gallery ---------------- */
   const ROOM_GAL={
     ciliegio:{name:"Ciliegio",color:"#B23A4A",images:[
-      "assets/img/ciliegio/004E187B-826C-4328-BB87-E25B7923ADD6_1_105_c.jpeg",
-      "assets/img/ciliegio/1C858122-4387-49AF-8D7A-FDF120BCCCDF_1_105_c.jpeg",
-      "assets/img/ciliegio/6D32562D-8943-4670-902C-61CE65D1F62D_1_105_c.jpeg",
-      "assets/img/ciliegio/DDE5F58A-0BD2-4448-A245-5C94023A328A_1_105_c.jpeg",
-      "assets/img/ciliegio/FCB5C546-3285-40F4-BED3-E442248C44A3_1_105_c.jpeg"
+      {src:"assets/img/ciliegio/004E187B-826C-4328-BB87-E25B7923ADD6_1_105_c.webp",alt:"Ingresso camera Ciliegio con TV, porta aperta sul giardino con bouganvillea e muro in pietra"},
+      {src:"assets/img/ciliegio/1C858122-4387-49AF-8D7A-FDF120BCCCDF_1_105_c.webp",alt:"Bagno camera Ciliegio con stucco marrone, specchio rotondo e rubinetteria a parete"},
+      {src:"assets/img/ciliegio/6D32562D-8943-4670-902C-61CE65D1F62D_1_105_c.webp",alt:"Camera Ciliegio con due letti singoli, arazzo macramé bianco e comodino vintage"},
+      {src:"assets/img/ciliegio/DDE5F58A-0BD2-4448-A245-5C94023A328A_1_105_c.webp",alt:"Camera Ciliegio con armadio rosso mattone, letto matrimoniale e lampada in terracotta"},
+      {src:"assets/img/ciliegio/FCB5C546-3285-40F4-BED3-E442248C44A3_1_105_c.webp",alt:"Bagno camera Ciliegio con doccia a vetro, lavabo su piano in legno e specchio rotondo"}
     ]},
     melograno:{name:"Melograno",color:"#A14C5C",images:[
-      "assets/img/melograno/39965D42-44D7-4A9F-994A-650F85146D70_1_105_c.jpeg",
-      "assets/img/melograno/5A5AA190-5F7E-4663-B219-57229E0CC6CD_1_105_c.jpeg",
-      "assets/img/melograno/8F9F1999-57C3-4CF3-8A2A-ADAB632EE354_1_105_c.jpeg",
-      "assets/img/melograno/908950AE-0094-46B6-B7C6-9EA184613161_1_105_c.jpeg",
-      "assets/img/melograno/94C2754A-D431-44D5-B99D-71164CCBDA83_1_105_c.jpeg",
-      "assets/img/melograno/B5531A80-0A13-4589-A8DC-8C86F44E3687_1_105_c.jpeg",
-      "assets/img/melograno/E5D114C5-44A4-41AE-9B55-93C94780D121_1_105_c.jpeg",
-      "assets/img/melograno/FD2816C2-9C84-4753-ACAA-BE84C72B9DD8_1_105_c.jpeg"
+      {src:"assets/img/melograno/39965D42-44D7-4A9F-994A-650F85146D70_1_105_c.webp",alt:"Camera Melograno con armadio verde salvia, porta sul giardino, lampada a gabbia e muri in pietra"},
+      {src:"assets/img/melograno/5A5AA190-5F7E-4663-B219-57229E0CC6CD_1_105_c.webp",alt:"Suite Melograno con letto matrimoniale, vasca freestanding, TV e nicchia in pietra"},
+      {src:"assets/img/melograno/8F9F1999-57C3-4CF3-8A2A-ADAB632EE354_1_105_c.webp",alt:"Bagno Melograno con doccia, lavabo su mobile nero e scaffali in legno"},
+      {src:"assets/img/melograno/908950AE-0094-46B6-B7C6-9EA184613161_1_105_c.webp",alt:"Vista camera Melograno con vasca freestanding in primo piano e armadio verde"},
+      {src:"assets/img/melograno/94C2754A-D431-44D5-B99D-71164CCBDA83_1_105_c.webp",alt:"Nicchia in pietra con TV e asciugamani sul bordo vasca, camera Melograno"},
+      {src:"assets/img/melograno/B5531A80-0A13-4589-A8DC-8C86F44E3687_1_105_c.webp",alt:"Specchio a corpo intero, vasca freestanding e letto con testiera mandala, camera Melograno"},
+      {src:"assets/img/melograno/E5D114C5-44A4-41AE-9B55-93C94780D121_1_105_c.webp",alt:"Camera Melograno con letto matrimoniale testiera mandala dorata, armadio verde e tappeto berber"},
+      {src:"assets/img/melograno/FD2816C2-9C84-4753-ACAA-BE84C72B9DD8_1_105_c.webp",alt:"Bagno Melograno con specchio rotondo nero, mensole in legno e rubinetteria a parete"}
     ]},
     mandarino:{name:"Mandarino",color:"#D98A3D",images:[
-      "assets/img/mandarino/2BF982EB-B46B-431A-99B9-5B6B99BEA573_1_105_c.jpeg",
-      "assets/img/mandarino/3D1F4E98-3E9C-4B34-8058-D15DA9A2DB7B_1_105_c.jpeg",
-      "assets/img/mandarino/3D65F52B-1405-4397-AE84-E23EF44B5CC1_1_105_c.jpeg",
-      "assets/img/mandarino/50008C99-41E3-4BC4-8EBC-F7FC8BBE34B0_1_105_c.jpeg",
-      "assets/img/mandarino/75ACE19F-4085-4791-8460-DD7E8B4D2A30_1_105_c.jpeg",
-      "assets/img/mandarino/9485273C-4939-4F3E-A079-F9CE90ABFED6_1_105_c.jpeg",
-      "assets/img/mandarino/AAEAF55B-2D87-41ED-A520-CE0A5E2A1DDC_1_105_c.jpeg",
-      "assets/img/mandarino/BB02D867-A811-490F-A96B-C6168A42E058_1_105_c.jpeg"
+      {src:"assets/img/mandarino/2BF982EB-B46B-431A-99B9-5B6B99BEA573_1_105_c.webp",alt:"Letto matrimoniale con testiera in canne di bambù e coperta in lino beige, camera Mandarino"},
+      {src:"assets/img/mandarino/3D1F4E98-3E9C-4B34-8058-D15DA9A2DB7B_1_105_c.webp",alt:"Bagno camera Mandarino con piastrelle arabescate azzurre, specchio in legno e doccia a vetro"},
+      {src:"assets/img/mandarino/3D65F52B-1405-4397-AE84-E23EF44B5CC1_1_105_c.webp",alt:"Dettaglio bagno Mandarino con specchio ovale in legno, scala decorativa e mattonelle arabescate"},
+      {src:"assets/img/mandarino/50008C99-41E3-4BC4-8EBC-F7FC8BBE34B0_1_105_c.webp",alt:"Camera Mandarino con letto matrimoniale, letti a castello bianchi e scrivania"},
+      {src:"assets/img/mandarino/75ACE19F-4085-4791-8460-DD7E8B4D2A30_1_105_c.webp",alt:"Doccia camera Mandarino con piastrelle arabescate azzurre e soffione"},
+      {src:"assets/img/mandarino/9485273C-4939-4F3E-A079-F9CE90ABFED6_1_105_c.webp",alt:"Vista ampia camera Mandarino con letto matrimoniale in bambù e letti a castello bianchi"},
+      {src:"assets/img/mandarino/AAEAF55B-2D87-41ED-A520-CE0A5E2A1DDC_1_105_c.webp",alt:"Scrivania bianca, specchio a figura intera, letti a castello e finestra, camera Mandarino"},
+      {src:"assets/img/mandarino/BB02D867-A811-490F-A96B-C6168A42E058_1_105_c.webp",alt:"Letti a castello bianchi con comodino, camera Mandarino"}
     ]},
     fico:{name:"Fico",color:"#5E7150",images:[
-      "assets/img/fico/012A4AF5-037E-4B74-9A73-D0928BEAA864_1_105_c.jpeg",
-      "assets/img/fico/11917173-96DB-485F-9724-BB20BC95CDE4_1_105_c.jpeg",
-      "assets/img/fico/276BC54C-333E-4E91-BB73-4A236C013215_1_105_c.jpeg",
-      "assets/img/fico/2D551F0B-9459-41FD-8EF1-37976753EE75_1_105_c.jpeg",
-      "assets/img/fico/49A61A97-7939-4507-9F61-24FB4669A954_1_105_c.jpeg",
-      "assets/img/fico/BD1DEAAE-AC9E-4C8A-9ACC-B8F19230ADDF_1_105_c.jpeg",
-      "assets/img/fico/E969058E-6F23-4CE9-ABD1-D23382104238_1_105_c.jpeg",
-      "assets/img/fico/EF4E9321-F9FB-45DD-B79B-DE3C5CE42DC8_1_105_c.jpeg"
+      {src:"assets/img/fico/012A4AF5-037E-4B74-9A73-D0928BEAA864_1_105_c.webp",alt:"Bagno Suite Fico con specchio rotondo in vimini, lavabo in ceramica su piano in legno massello e doccia a vetro"},
+      {src:"assets/img/fico/11917173-96DB-485F-9724-BB20BC95CDE4_1_105_c.webp",alt:"Suite Fico con volte a stella imbiancate, letto matrimoniale a baldacchino, jacuzzi e poltrona in giunco"},
+      {src:"assets/img/fico/276BC54C-333E-4E91-BB73-4A236C013215_1_105_c.webp",alt:"Camera Suite Fico con letto matrimoniale a baldacchino dorato, testiera in giunco e poltrona viennese sotto la volta a stella"},
+      {src:"assets/img/fico/2D551F0B-9459-41FD-8EF1-37976753EE75_1_105_c.webp",alt:"Area soggiorno Suite Fico con tavolo in legno, sedie Tolix bianche, armadio vintage, tappeto in juta e volta a stella"},
+      {src:"assets/img/fico/49A61A97-7939-4507-9F61-24FB4669A954_1_105_c.webp",alt:"Bagno Suite Fico con specchio rotondo in bambù, lavabo in ceramica su piano live-edge e doccia a vetro"},
+      {src:"assets/img/fico/BD1DEAAE-AC9E-4C8A-9ACC-B8F19230ADDF_1_105_c.webp",alt:"Consolle in legno di recupero con portacandele a sfere e quadro tropicale, Suite Fico"},
+      {src:"assets/img/fico/E969058E-6F23-4CE9-ABD1-D23382104238_1_105_c.webp",alt:"Veranda Suite Fico con poltrone in lino beige, tetto in canne e tende bianche con vista sul giardino"},
+      {src:"assets/img/fico/EF4E9321-F9FB-45DD-B79B-DE3C5CE42DC8_1_105_c.webp",alt:"Jacuzzi incassata in pedana in legno, specchio circolare e composizione con vaso in vetro verde, Suite Fico"}
     ]}
   };
   const rgEl=$("#roomGal");
@@ -602,12 +602,12 @@
   }
   function showRGImg(){
     const img=$("#rgImg");
-    const src=rgRoom.images[rgIdx];
+    const item=rgRoom.images[rgIdx];
     img.classList.add("rg-fade");
     img.onload=img.onerror=()=>img.classList.remove("rg-fade");
-    img.src=src;
+    img.src=item.src;
     if(img.complete) img.classList.remove("rg-fade");
-    img.alt=rgRoom.name+" — foto "+(rgIdx+1);
+    img.alt=item.alt;
     $("#rgCount").textContent=(rgIdx+1)+" / "+rgRoom.images.length;
     $$(".rg__thumb",rgEl).forEach((t,i)=>t.classList.toggle("is-active",i===rgIdx));
     const active=$(".rg__thumb.is-active",rgEl);
@@ -620,8 +620,8 @@
   }
   function buildRGStrip(){
     const strip=$("#rgStrip");
-    strip.innerHTML=rgRoom.images.map((src,i)=>
-      `<button class="rg__thumb${i===0?" is-active":""}" data-rg-i="${i}"><img src="${src}" alt="${rgRoom.name} ${i+1}" loading="lazy"></button>`
+    strip.innerHTML=rgRoom.images.map((item,i)=>
+      `<button class="rg__thumb${i===0?" is-active":""}" data-rg-i="${i}"><img src="${item.src}" alt="${item.alt}" loading="lazy"></button>`
     ).join("");
   }
   document.addEventListener("click",e=>{
