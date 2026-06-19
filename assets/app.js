@@ -423,8 +423,9 @@
 
   /* ---------------- Esc key ---------------- */
   document.addEventListener("keydown",e=>{
-    if(e.key==="Escape"){ closeBooking(); closeLB(); closeLang(); drawer.classList.remove("is-open"); document.body.style.overflow=lb.classList.contains("is-open")||modal.classList.contains("is-open")?"hidden":""; }
+    if(e.key==="Escape"){ closeBooking(); closeLB(); closeLang(); closeRG(); drawer.classList.remove("is-open"); document.body.style.overflow=lb.classList.contains("is-open")||modal.classList.contains("is-open")||rgEl.classList.contains("is-open")?"hidden":""; }
     if(lb.classList.contains("is-open")){ if(e.key==="ArrowLeft")lbStep(-1); if(e.key==="ArrowRight")lbStep(1); }
+    if(rgEl.classList.contains("is-open")){ if(e.key==="ArrowLeft")rgStep(-1); if(e.key==="ArrowRight")rgStep(1); }
   });
 
   /* ---------------- Reveal on scroll ---------------- */
@@ -540,6 +541,106 @@
     else if(ty==="__deactivate_edit_mode") panel.style.display="none";
   });
   try{ window.parent.postMessage({type:"__edit_mode_available"},"*"); }catch(e){}
+
+  /* ---------------- Room gallery ---------------- */
+  const ROOM_GAL={
+    ciliegio:{name:"Ciliegio",color:"#B23A4A",images:[
+      "assets/img/ciliegio/004E187B-826C-4328-BB87-E25B7923ADD6_1_105_c.jpeg",
+      "assets/img/ciliegio/1C858122-4387-49AF-8D7A-FDF120BCCCDF_1_105_c.jpeg",
+      "assets/img/ciliegio/6D32562D-8943-4670-902C-61CE65D1F62D_1_105_c.jpeg",
+      "assets/img/ciliegio/DDE5F58A-0BD2-4448-A245-5C94023A328A_1_105_c.jpeg",
+      "assets/img/ciliegio/FCB5C546-3285-40F4-BED3-E442248C44A3_1_105_c.jpeg"
+    ]},
+    melograno:{name:"Melograno",color:"#A14C5C",images:[
+      "assets/img/melograno/39965D42-44D7-4A9F-994A-650F85146D70_1_105_c.jpeg",
+      "assets/img/melograno/5A5AA190-5F7E-4663-B219-57229E0CC6CD_1_105_c.jpeg",
+      "assets/img/melograno/8F9F1999-57C3-4CF3-8A2A-ADAB632EE354_1_105_c.jpeg",
+      "assets/img/melograno/908950AE-0094-46B6-B7C6-9EA184613161_1_105_c.jpeg",
+      "assets/img/melograno/94C2754A-D431-44D5-B99D-71164CCBDA83_1_105_c.jpeg",
+      "assets/img/melograno/B5531A80-0A13-4589-A8DC-8C86F44E3687_1_105_c.jpeg",
+      "assets/img/melograno/E5D114C5-44A4-41AE-9B55-93C94780D121_1_105_c.jpeg",
+      "assets/img/melograno/FD2816C2-9C84-4753-ACAA-BE84C72B9DD8_1_105_c.jpeg"
+    ]},
+    mandarino:{name:"Mandarino",color:"#D98A3D",images:[
+      "assets/img/mandarino/2BF982EB-B46B-431A-99B9-5B6B99BEA573_1_105_c.jpeg",
+      "assets/img/mandarino/3D1F4E98-3E9C-4B34-8058-D15DA9A2DB7B_1_105_c.jpeg",
+      "assets/img/mandarino/3D65F52B-1405-4397-AE84-E23EF44B5CC1_1_105_c.jpeg",
+      "assets/img/mandarino/50008C99-41E3-4BC4-8EBC-F7FC8BBE34B0_1_105_c.jpeg",
+      "assets/img/mandarino/75ACE19F-4085-4791-8460-DD7E8B4D2A30_1_105_c.jpeg",
+      "assets/img/mandarino/9485273C-4939-4F3E-A079-F9CE90ABFED6_1_105_c.jpeg",
+      "assets/img/mandarino/AAEAF55B-2D87-41ED-A520-CE0A5E2A1DDC_1_105_c.jpeg",
+      "assets/img/mandarino/BB02D867-A811-490F-A96B-C6168A42E058_1_105_c.jpeg"
+    ]},
+    fico:{name:"Fico",color:"#5E7150",images:[
+      "assets/img/fico/012A4AF5-037E-4B74-9A73-D0928BEAA864_1_105_c.jpeg",
+      "assets/img/fico/11917173-96DB-485F-9724-BB20BC95CDE4_1_105_c.jpeg",
+      "assets/img/fico/276BC54C-333E-4E91-BB73-4A236C013215_1_105_c.jpeg",
+      "assets/img/fico/2D551F0B-9459-41FD-8EF1-37976753EE75_1_105_c.jpeg",
+      "assets/img/fico/49A61A97-7939-4507-9F61-24FB4669A954_1_105_c.jpeg",
+      "assets/img/fico/BD1DEAAE-AC9E-4C8A-9ACC-B8F19230ADDF_1_105_c.jpeg",
+      "assets/img/fico/E969058E-6F23-4CE9-ABD1-D23382104238_1_105_c.jpeg",
+      "assets/img/fico/EF4E9321-F9FB-45DD-B79B-DE3C5CE42DC8_1_105_c.jpeg"
+    ]}
+  };
+  const rgEl=$("#roomGal");
+  let rgRoom=null, rgIdx=0, rgTouchSX=0;
+
+  function openRG(id){
+    const room=ROOM_GAL[id]; if(!room) return;
+    rgRoom=room; rgIdx=0;
+    rgEl.style.setProperty("--rg-c",room.color);
+    $("#rgDot").style.background=room.color;
+    $("#rgName").textContent=room.name;
+    buildRGStrip();
+    showRGImg();
+    rgEl.classList.add("is-open");
+    document.body.style.overflow="hidden";
+  }
+  function closeRG(){
+    rgEl.classList.remove("is-open");
+    document.body.style.overflow="";
+  }
+  function showRGImg(){
+    const img=$("#rgImg");
+    const src=rgRoom.images[rgIdx];
+    img.classList.add("rg-fade");
+    img.onload=img.onerror=()=>img.classList.remove("rg-fade");
+    img.src=src;
+    if(img.complete) img.classList.remove("rg-fade");
+    img.alt=rgRoom.name+" — foto "+(rgIdx+1);
+    $("#rgCount").textContent=(rgIdx+1)+" / "+rgRoom.images.length;
+    $$(".rg__thumb",rgEl).forEach((t,i)=>t.classList.toggle("is-active",i===rgIdx));
+    const active=$(".rg__thumb.is-active",rgEl);
+    if(active) active.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});
+  }
+  function rgStep(d){
+    if(!rgRoom) return;
+    rgIdx=(rgIdx+d+rgRoom.images.length)%rgRoom.images.length;
+    showRGImg();
+  }
+  function buildRGStrip(){
+    const strip=$("#rgStrip");
+    strip.innerHTML=rgRoom.images.map((src,i)=>
+      `<button class="rg__thumb${i===0?" is-active":""}" data-rg-i="${i}"><img src="${src}" alt="${rgRoom.name} ${i+1}" loading="lazy"></button>`
+    ).join("");
+  }
+  document.addEventListener("click",e=>{
+    const el=e.target.closest("[data-open-gallery]");
+    if(el){ e.stopPropagation(); openRG(el.dataset.openGallery); }
+  });
+  $$("[data-rg-close]").forEach(b=>b.addEventListener("click",closeRG));
+  rgEl.addEventListener("click",e=>{ if(e.target===rgEl) closeRG(); });
+  $("#rgStrip").addEventListener("click",e=>{
+    const t=e.target.closest("[data-rg-i]");
+    if(t){ rgIdx=+t.dataset.rgI; showRGImg(); }
+  });
+  $("#rgPrev").addEventListener("click",()=>rgStep(-1));
+  $("#rgNext").addEventListener("click",()=>rgStep(1));
+  $("#rgStage").addEventListener("touchstart",e=>{ rgTouchSX=e.touches[0].clientX; },{passive:true});
+  $("#rgStage").addEventListener("touchend",e=>{
+    const dx=e.changedTouches[0].clientX-rgTouchSX;
+    if(Math.abs(dx)>44) rgStep(dx<0?1:-1);
+  },{passive:true});
 
   /* ---------------- Init ---------------- */
   buildLangMenus();
