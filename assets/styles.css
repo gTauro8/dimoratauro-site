@@ -557,12 +557,12 @@ button.link-arrow{background:none;border:0;padding:0;color:var(--rc,var(--accent
 /* ============================================================
    ROOM GALLERY
    ============================================================ */
-.rg{position:fixed;inset:0;z-index:140;display:none;align-items:flex-end;justify-content:center}
+.rg{position:fixed;inset:0;z-index:140;display:none;align-items:center;justify-content:center;padding:16px}
 .rg.is-open{display:flex}
 .rg__scrim{position:absolute;inset:0;background:rgba(18,18,15,.88);backdrop-filter:blur(6px)}
 .rg__panel{
   position:relative;z-index:1;background:var(--graphite);color:#fff;
-  width:100%;border-radius:18px 18px 0 0;max-height:92dvh;
+  width:100%;border-radius:14px;max-height:90dvh;
   display:flex;flex-direction:column;overflow:hidden
 }
 .rg.is-open .rg__panel{animation:rgIn .38s var(--ease)}
